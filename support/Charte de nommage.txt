@@ -1,0 +1,15 @@
+
+//Fonctions:
+
+camelCase
+English
+
+//Organisation de Fichier:
+
+Tout en miniscule, pas d'espace, pas d'accent, _ en guise d'espace,
+dossier assets (font, images, polices, ... ), include (...), 
+
+//classes
+
+dossiers pour classes, interfaces, traits...
+nom.type.php -> popo.classe.php ou popo.trait.php ou popo.interface.php
