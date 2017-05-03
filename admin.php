@@ -1,5 +1,8 @@
 <?php  
 require_once('inc/common.php');
+
+$card = new CardManager(SPDO::getInstance(DB_HOST, DB_NAME, DB_USER, DB_PASS)->getPDO());
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,10 +21,12 @@ require_once('inc/common.php');
 		</select>
 		<input type="number" name="c_attaque" placeholder="Point d'attaque">
 		<input type="number" name="c_vie" placeholder="Point de vie">
+		<label for="">Bouclier</label>
 		<select name="c_bouclier" placeholder="Est-ce un Bouclier ?">
 			<option value="0">Non</option>
 			<option value="1">Oui</option>
 		</select>
+		<label for="">Légendaire</label>
 		<select name="c_legendaire" placeholder="Est-ce un Légendaire ?">
 			<option value="0">Non</option>
 			<option value="1">Oui</option>
@@ -30,17 +35,21 @@ require_once('inc/common.php');
 		<input type="text" name="c_citation" placeholder="Citation">
 		<select name="c_faction">
 			<?php  
-			$sql = 'SELECT * FROM `faction`';
+			$sql = 'SELECT `f_nom`,`f_id` FROM `faction`';
 
-			$factions = new Manager(DB_HOST, DB_NAME, DB_USER, DB_PASS);
+			$factionRequest = $card->executeQuery($sql);
 
-			$result = $factions -> MakeSelect($sql, $param = array(), $fetchStyle = PDO::FETCH_ASSOC, $fetchArg = NULL, "faction");
+			foreach ($factionRequest as $faction) {
+				echo '<option value="'. $faction['f_id'] .'">'. $faction['f_nom'] .'</option>';
 
-			foreach ($result as $faction) {
-				echo '<option value="'. $faction->GetFID() .'">'. $faction->GetFNom() .'</option>';
 			}
+
 			?>
 		</select>
+		<?php 
+			var_dump($factionRequest);
+
+		 ?>
 		<input type="submit">
 	</form>
 </body>

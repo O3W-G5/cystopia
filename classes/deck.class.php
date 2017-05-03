@@ -13,6 +13,7 @@ class Deck
 		pour les 20 cartes, aller chercher les cartes dans la bdd
 		ne pas oublier les doublons pour les boucliers identiques
 		les mettre dans $deckArray
+		FAIRE APPEL AU MANAGER !
 	}
 
 	/**
@@ -24,11 +25,10 @@ class Deck
 	}
 
 	/**
-	*	CountCardDeck -
+	*	CountCardDeck - Count how many cards are available
 	**/
 	public function CardAvailable()
 	{
-		// Compte le nombre de carte dispo dans le deck
 		return count( $deckArray );
 	}
 
@@ -38,6 +38,7 @@ class Deck
 	*	$hand = array()
 	* 	take out a card from the deck and put it into hand
 	**/
+
 	public function Draw( $deck, $hand )
 	{
 		// Si NoMoreCard = false
@@ -46,12 +47,12 @@ class Deck
 					$drawedCard = array_shift( $deck );
 					$hand = array_push( $hand, $drawedCard );
 				endif;
-					
 	}
 
 	/**
 	*	NoMoreCard -
 	**/
+
 	public function NoMoreCard()
 	{
 		// Si CardAvailable = 0 alors return true

@@ -15,8 +15,8 @@ class Board {
 
 		//A Confirmer, vérifier		
 		$deck1 = new deck; //CLONE?
-		$deck2 = new deck; //CLONE?
 		$hero1 = new hero;
+		$deck2 = new deck; //CLONE?
 		$hero2 = new hero;
 		self::shuffleDeck();
 		//A Confirmer, vérifier		
@@ -25,7 +25,7 @@ class Board {
 	/**
 	* shuffle 2 deck, use shuffle function on an array
 	**/
-	public function shuffleDeck( $deck1, $deck2 ) // VOIR SI PASSAGE EN REFERENCE !!!!
+	public function shuffleDeck() // VOIR SI PASSAGE EN REFERENCE !!!!
 	{
 		// Mélange le deck
 		$deck1 = shuffle($deck1);
@@ -35,7 +35,7 @@ class Board {
 	/**
 	* Draw 3 cards per player for start game
 	**/
-	public function drawStart( $deck1, $deck2 )
+	public function drawStart()
 	{
 		// draw() 3 fois pour chacun des deux joueurs
 		for ($i=0; $i < 3 ; $i++):
